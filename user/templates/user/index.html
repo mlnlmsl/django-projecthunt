@@ -3,5 +3,26 @@
 
 <!--page level code-->
 {% block content %}
-    <div class="jumbotron" > test</div>
+    <div id="app">
+        <div class="jumbotron" > test</div>
+       <p v-text="test"></p>
+    </div>
 {% endblock  %}
+
+<!--Page Level JS code-->
+{% block js %}
+    <script>
+        Vue.config.delimiters = ['[[', ']]'];
+        var vue = new Vue({
+            el:'#app',
+            data:{
+                test: 'hello'
+            },
+            method:{},
+            created(){
+                console.log('created');
+            },
+            computed:{}
+        });
+    </script> 
+{% endblock js %}   
