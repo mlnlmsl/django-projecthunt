@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{%  load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project Hunt </title>
+    {% include "partials/header.html" %}
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-sm-2">
+            this is just a test
+        </div>
+        <div class="col-sm-8">
+            this another test
+        </div>
+        {% include "partials/footer.html" %}
+    </div>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% block js %}
+    {% endblock %}
+</body>
+
+</html>
