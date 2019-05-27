@@ -1,8 +1,17 @@
 {% extends "master.html" %}
 
+<!-- page level css -->
+
+{%block css%}
+<style>
+.login-form{
+    margin:auto;
+}
+</style>
+{%endblock%}
 <!--page level content-->
 {% block content %}
-    <div class="login-form">
+    <div class="login-form col-md-4">
     <h4>Login</h4>
     <form>
         <div class="form-group">
@@ -23,5 +32,13 @@
 {% endblock  %}
 
 {% block js %}
-
+<script>
+Vue.config.delimiters = ['[[', ']]'];
+var vue = new Vue({
+    data:{},
+    methods:{},
+    created(){},
+    computed:{}
+})
+</script>
 {% endblock  %}
