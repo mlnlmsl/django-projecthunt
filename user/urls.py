@@ -3,5 +3,6 @@ from . import views
 
 # url patterns for the user
 urlpatterns = [
-    path('', views.index)
+    path('', views.index),
+    path('register/', views.register, name="register")
 ]
