@@ -1,4 +1,4 @@
 # django-projecthunt
 
-Project hunt project made with djago. 
-Here peopel can create account, login and post projects.
+Project hunt project made with django. 
+Here people can create account, login and post projects.
