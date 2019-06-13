@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
 
 
 def index(request):
@@ -9,15 +10,26 @@ def index(request):
 
 
 def register(request):
-    form = UserCreationForm()
     if request.method == 'GET':
-        return render(request, 'user/register.html',{'form':form})
+        form = UserCreationForm()
+        return render(request, 'user/register.html', {'form': form})
     elif request.method == "POST":
-        username = request.POST['username']
-        email = request.POST['email']
-        passowrd = request.POST['password']
-        confirm_password = request.POST['confirm_password']
-        if passowrd != confirm_password:
-            messages.error(request, 'Password must match')
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
 
         return HttpResponse("<p> register post</p>")
+
+
+def login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if(user is not None):
+            login(request, user)
+            messages.success(request,'Welcome to Project Hunt')
+            return redirect('dashboard')
+        else:
+            messages.error(request,"Invalid Credentials")
+            return redirect(request.META['HTTP_REFERER'])
