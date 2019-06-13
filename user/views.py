@@ -28,8 +28,12 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         if(user is not None):
             login(request, user)
-            messages.success(request,'Welcome to Project Hunt')
+            messages.success(request, 'Welcome to Project Hunt')
             return redirect('dashboard')
         else:
-            messages.error(request,"Invalid Credentials")
+            messages.error(request, "Invalid Credentials")
             return redirect(request.META['HTTP_REFERER'])
+
+
+def dashboard(request):
+    pass
